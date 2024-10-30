@@ -7,3 +7,13 @@ python -m venv .venv
 
 
 <!-- python.exe -m pip install --upgrade pip -->
+
+```shell
+flask shell
+db.create_all()
+db.drop_all()
+db.session.commit()
+exit()
+```
+
+pip install -r requirements.txt --upgrade
