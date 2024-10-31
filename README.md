@@ -73,8 +73,120 @@ docker-compose up -d
 python app.py
 ```
 
-🌐 A aplicação estará disponível em `http://127.0.0.1:5000`.
+## 🌐 Acesso à API
+A API estará disponível em: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
+## 🔗 Endpoints
+
+### ✍️ Criar Usuário
+- **Descrição**: Cria um novo usuário com senha criptografada.
+- **Método**: `POST`
+- **Endpoint**: `/user`
+
+🌐 **Exemplo de Requisição**: `http://localhost:5000/user`
+
+```json
+{
+    "username": "novousuario",
+    "password": "123456"
+}
+```
+
+📄 **Exemplo de Resposta:**
+
+```json
+{
+    "message": "Usuário cadastrado com sucesso!"
+}
+```
+
+### 🔓 Fazer Login
+- **Descrição**: Autentica um usuário e inicia uma sessão.
+- **Método**: `POST`
+- **Endpoint**: `/login`
+
+🌐 **Exemplo de Requisição**: `http://localhost:5000/login`
+
+```json
+{
+    "username": "novousuario",
+    "password": "123456"
+}
+```
+
+📄 **Exemplo de Resposta:**
+
+```json
+{
+    "message": "Login realizado com sucesso!"
+}
+```
+
+### 🚪 Fazer Logout
+- **Descrição**: Encerra a sessão de um usuário autenticado.
+- **Método**: `GET`
+- **Endpoint**: `/logout`
+
+🌐 **Exemplo de Requisição**: `http://localhost:5000/logout`
+
+📄 **Exemplo de Resposta:**
+
+```json
+{
+    "message": "Logout realizado com sucesso!"
+}
+```
+
+### 👁️ Ler Usuário
+- **Descrição**: Recupera as informações de um usuário específico.
+- **Método**: `GET`
+- **Endpoint**: `/user/{id_user}`
+
+🌐 **Exemplo de Requisição**: `http://localhost:5000/user/{id_user}`
+
+📄 **Exemplo de Resposta:**
+
+```json
+{
+    "username": "novousuario"
+}
+```
+
+### 🔄 Atualizar Usuário
+- **Descrição**: Atualiza a senha do usuário autenticado.
+- **Método**: `PUT`
+- **Endpoint**: `/user/{id_user}`
+
+🌐 **Exemplo de Requisição**: `http://localhost:5000/user/{id_user}`
+
+```json
+{
+    "password": "654321"
+}
+```
+
+📄 **Exemplo de Resposta:**
+
+```json
+{
+    "message": "Usuário novousuario atualizado com sucesso!"
+}
+```
+
+### 🗑️ Deletar Usuário
+- **Descrição**: Exclui um usuário. Ação restrita ao administrador.
+- **Método**: `DELETE`
+- **Endpoint**: `/user/{id_user}`
+
+🌐 **Exemplo de Requisição**: `http://localhost:5000/user/{id_user}`
+
+📄 **Exemplo de Resposta:**
+
+```json
+{
+    "message": "Usuário novousuario deletado com sucesso!"
+}
+```
 
 ## 🛠️ Comandos Úteis do `Flask Shell`
 
@@ -91,3 +203,14 @@ db.session.commit()
 # Sai do shell
 exit()
 ```
+
+## 🤝 Contribuindo
+
+Se você deseja contribuir com o projeto, fique à vontade para abrir uma pull request ou uma issue.
+
+## 📞 Contato
+
+<div>
+    <a href="https://www.linkedin.com/in/joschonarth/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+    <a href="mailto:joschonarth@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+</div>
