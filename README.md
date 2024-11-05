@@ -79,7 +79,7 @@ docker-compose up -d
     ```bash
     db.create_all()
     ```
-- Salve as alterações:
+- Salve as alterações no banco de dados:
 
     ```bash
     db.sessions.commit()
