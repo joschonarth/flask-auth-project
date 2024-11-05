@@ -31,43 +31,66 @@ Este é um projeto de API de autenticação de usuário construído com Flask. E
 
 ## 🚀 Como Rodar o Projeto
 
-1. Clone o repositório:
+📌 1. Clone o repositório:
 
 ```bash
 git clone https://github.com/joschonarth/flask-sample-auth
 ```
 
-2. Entre na pasta do projeto:
+📌 2. Entre na pasta do projeto:
 
 ```bash
 cd flask-sample-auth
 ```
 
-3. Crie um ambiente virtual:
+📌 3. Crie um ambiente virtual:
 
 ```bash
 python -m venv .venv
 ```
 
-4. Ative o ambiente ambiente virtual:
+📌 4. Ative o ambiente ambiente virtual:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-5. Instale as dependências do projeto que estão no arquivo [`requirements.txt`](requirements.txt):
+📌 5. Instale as dependências do projeto que estão no arquivo [`requirements.txt`](requirements.txt):
 
 ```bash
 pip install -r requirements.txt
 ```
 
-6. Execute o arquivo [`docker-compose.yml`](docker-compose.yml) para baixar e rodar a imagem do MySQL:
+📌 6. Execute o arquivo [`docker-compose.yml`](docker-compose.yml) para baixar e rodar a imagem do MySQL:
 
 ```bash
 docker-compose up -d
 ```
 
-7. Inicie o servidor de desenvolvimento:
+📌 7. Abra o `Flask Shell` no terminal e crie as tabelas no banco de dados:
+
+- Primeiro, abra o Flask shell:
+
+    ```bash
+    flask shell
+    ```
+- Depois, dentro do Flask Shell, crie as tabelas:
+
+    ```bash
+    db.create_all()
+    ```
+- Salve as alterações:
+
+    ```bash
+    db.sessions.commit()
+    ```
+- Saia do Flask Shell:
+
+    ```bash
+    exit()
+     ```
+
+📌 8. Inicie o servidor de desenvolvimento:
 
 ```bash
 python app.py
@@ -191,14 +214,35 @@ A API estará disponível em: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 ## 🛠️ Comandos Úteis do `Flask Shell`
 
 ```bash
-# Cria todas as tabelas definidas nos modelos
+# Cria todas as tabelas definidas nos Models
 db.create_all()
 
-# Para deletar todas as tabelas (use com cuidado)
+# Deleta todas as tabelas do banco de dados
 db.drop_all()
 
 # Salva as alterações no banco de dados
 db.session.commit()
+
+# Cancela as alterações pendentes do banco de dados que ainda não foram salvas definitivamente.
+db.session.rollback()
+
+# Consulta todos os registros de uma tabela específica (exemplo com a tabela 'User')
+User.query.all()
+
+# Consulta um registro específico por ID (exemplo com a tabela 'User')
+User.query.get(1)
+
+# Adiciona um novo registro no banco de dados (exemplo com a tabela 'User')
+new_user = User(username="username", password="123456")
+db.session.add(new_user)
+
+# Atualiza um registro existente no banco de dados (exemplo com a tabela 'User')
+user = User.query.get(1)
+user.username = "new_username"
+
+# Deleta um registro específico do banco de dados (exemplo com a tabela 'User')
+user_to_delete = User.query.get(1)
+db.session.delete(user_to_delete)
 
 # Sai do shell
 exit()
