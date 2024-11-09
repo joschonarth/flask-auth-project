@@ -11,5 +11,3 @@ services:
       - "3307:3306"
     expose:
       - '3306'
-    volumes:
-      - C:\Users\josch\Rocketseat\mysql:/var/lib/mysql
