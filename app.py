@@ -75,7 +75,8 @@ def update_user(id_user):
         return jsonify({"message": "Operação não permitida."}), 403
     
     if user and data.get("password"):
-        user.password = data.get("password")
+        hashed_password = bcrypt.hashpw(str.encode(data["password"]), bcrypt.gensalt())
+        user.password = hashed_password
         db.session.commit()
 
         return jsonify({"message": f"Usuário {user.username} atualizado com sucesso!"})
